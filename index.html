@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Japanese Number Practice</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="backdrop"></div>
+    <main class="app">
+      <header class="app__header">
+        <p class="eyebrow">Number Practice</p>
+        <h1>Japanese Numbers Drill</h1>
+        <p class="lede">Train both directions: digits to Japanese, and Japanese to digits.</p>
+      </header>
+
+      <section class="panel panel--controls" aria-label="Practice controls">
+        <div class="control-group">
+          <label class="control-label" for="mode">Mode</label>
+          <select id="mode" class="control-input">
+            <option value="mixed">Mixed (random)</option>
+            <option value="digitsToJapanese">Digits → Japanese</option>
+            <option value="japaneseToDigits">Japanese → Digits</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="min">Range</label>
+          <div class="range-row">
+            <input id="min" class="control-input" type="number" inputmode="numeric" min="0" max="20000000" value="0" />
+            <span class="range-sep">to</span>
+            <input id="max" class="control-input" type="number" inputmode="numeric" min="0" max="20000000" value="999" />
+          </div>
+          <p class="control-help">Supported: 0–20,000,000</p>
+        </div>
+
+        <div class="control-group control-group--inline">
+          <input id="allowRomaji" type="checkbox" checked />
+          <label for="allowRomaji">Accept romaji answers (for digits → Japanese)</label>
+        </div>
+
+        <button id="newPrompt" class="button button--primary" type="button">New prompt</button>
+      </section>
+
+      <section class="panel panel--practice" aria-live="polite">
+        <div class="prompt-card">
+          <p class="prompt-label">Prompt</p>
+          <div id="prompt" class="prompt">Press “New prompt” to begin</div>
+          <p id="direction" class="prompt-direction"></p>
+        </div>
+
+        <form id="answerForm" class="answer" autocomplete="off">
+          <label class="control-label" for="answerInput">Your answer</label>
+          <input
+            id="answerInput"
+            class="answer-input"
+            type="text"
+            placeholder="Type the answer here"
+            inputmode="text"
+            autocomplete="off"
+          />
+          <div class="answer-actions">
+            <button class="button button--secondary" type="submit">Check</button>
+            <button id="reveal" class="button button--ghost" type="button">Reveal</button>
+          </div>
+        </form>
+
+        <div id="feedback" class="feedback" role="status"></div>
+        <div id="answerKey" class="answer-key"></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
